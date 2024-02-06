@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AwsLogAnalyser</class>
+ <widget class="QWidget" name="AwsLogAnalyser">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1067</width>
+    <height>674</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AwsLogAnalyser</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" rowstretch="2,1,1,12">
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_logs_path">
+     <property name="text">
+      <string>Logs path :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="pushButton_browse">
+     <property name="text">
+      <string>Browse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLabel" name="label_credits">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;version 1.0&lt;br/&gt;by Cyberretta&lt;br/&gt;&lt;a href=&quot;https://github.com/Cyberretta&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#308cc6;&quot;&gt;https://github.com/Cyberretta&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="openExternalLinks">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_title">
+     <property name="styleSheet">
+      <string notr="true">image: url(:/images/AwsLogAnalyser_logo.png);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <widget class="QWidget" name="tab_events">
+      <attribute name="title">
+       <string>Events</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_5" columnstretch="1,1">
+       <item row="0" column="1">
+        <widget class="QGroupBox" name="groupBox_details">
+         <property name="title">
+          <string>Selected event details</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="1">
+           <widget class="QTextEdit" name="textEdit_event_details">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QPushButton" name="pushButton_search">
+         <property name="text">
+          <string>Search</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QGroupBox" name="groupBox_filters">
+         <property name="title">
+          <string>Filters</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="2" column="6">
+           <widget class="QPushButton" name="pushButton_removefilters">
+            <property name="text">
+             <string>Remove selected filters</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="6">
+           <widget class="QPushButton" name="pushButton_addfilter">
+            <property name="text">
+             <string>Add filter</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QLineEdit" name="lineEdit_addfilter_value"/>
+          </item>
+          <item row="1" column="4">
+           <widget class="QLabel" name="label_addfilter_value">
+            <property name="text">
+             <string>Value :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="7">
+           <widget class="QTableWidget" name="tableWidget_filters">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <column>
+             <property name="text">
+              <string>Key</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Operation</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_addfilter_key">
+            <property name="text">
+             <string>Key :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="lineEdit_addfilter_key"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_filter_operation">
+            <property name="text">
+             <string>Operation :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QComboBox" name="comboBox_filter_operation">
+            <item>
+             <property name="text">
+              <string>equal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>not equal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>contains</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>exists (not yet implemented)</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>doesn't exists (not yet implemented)</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="2">
+        <widget class="QGroupBox" name="groupBox_events">
+         <property name="title">
+          <string>Matching events</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="checkBox_time_to">
+            <property name="text">
+             <string>To :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDateTimeEdit" name="dateTimeEdit_time_to">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="frame">
+             <bool>true</bool>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+            <property name="displayFormat">
+             <string>dd/MM/yyyy HH:mm:ss</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="checkBox_time_from">
+            <property name="text">
+             <string>From :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDateTimeEdit" name="dateTimeEdit_time_from">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="displayFormat">
+             <string notr="true">dd/MM/yyyy HH:mm:ss</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QTableWidget" name="tableWidget_matching_events">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+            <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+             <bool>true</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Event ID</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Event time</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Region</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QLabel" name="label_matching_events_count">
+            <property name="text">
+             <string>Found 0 matching events</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_statistics">
+      <attribute name="title">
+       <string>Statistics</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="3">
+        <widget class="QPushButton" name="pushButton_get_statistics">
+         <property name="text">
+          <string>Get statistics</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QRadioButton" name="radioButton_statistics_scope_all">
+         <property name="text">
+          <string>All events</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_statistics_key">
+         <property name="text">
+          <string>Key :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="4">
+        <widget class="QTableWidget" name="tableWidget_statistics_results">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>Value</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Occurences</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Percentage</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QRadioButton" name="radioButton_statistics_scope_matching">
+         <property name="text">
+          <string>Matching events</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_statistics_scope">
+         <property name="text">
+          <string>Scope :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QLineEdit" name="lineEdit_statistics_key"/>
+       </item>
+       <item row="0" column="4" rowspan="3">
+        <widget class="QGraphicsView" name="graphicsView"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_errors">
+      <attribute name="title">
+       <string>Errors</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,0">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBox_erros_settings">
+         <property name="title">
+          <string>Settings</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_errors_scope">
+            <property name="text">
+             <string>Scope :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QRadioButton" name="radioButton_errors_scope_all">
+            <property name="text">
+             <string>All events</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QRadioButton" name="radioButton_errors_scope_matching">
+            <property name="text">
+             <string>Matching events</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBox_found_erros">
+         <property name="title">
+          <string>Found errors</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QTableWidget" name="tableWidget_errors">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+            <column>
+             <property name="text">
+              <string>Event ID</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Error Code</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Event Time</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Source</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1" rowspan="2">
+        <widget class="QGroupBox" name="groupBox_error_details">
+         <property name="title">
+          <string>Error details</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="0">
+           <widget class="QTextEdit" name="textEdit_error_details">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_alerts">
+      <attribute name="title">
+       <string>Alerts</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_11">
+       <item row="0" column="0">
+        <widget class="QTreeWidget" name="treeWidget_alerts">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <attribute name="headerCascadingSectionResizes">
+          <bool>false</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Alerts</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Values</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

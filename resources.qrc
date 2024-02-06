@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>AwsLogAnalyser_logo.png</file>
+        <file>AwsLogAnalyser_logo_small.png</file>
+    </qresource>
+</RCC>
