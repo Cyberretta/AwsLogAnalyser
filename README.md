@@ -1,5 +1,5 @@
 # AwsLogAnalyser
-Please, note that this is still a work in progress ! This tool may contain bugs, partally working features, or missing features !
+Please note that this is still a work in progress ! This tool may contain bugs, partially working features, or missing features !
 ## What is this tool for
 This tool is designed to analyze logs exported from AWS in Json format with a graphical interface. It helps identify suspicious activities. The tool is still in the testing phase but can already be used.
 
